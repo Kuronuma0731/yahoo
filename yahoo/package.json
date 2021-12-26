@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
-    "package": "^1.0.1"
+    "package": "^1.0.1",
+    "selenium-webdriver": "^4.1.0"
   },
   "license": "ISC"
 }
