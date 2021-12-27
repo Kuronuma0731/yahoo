@@ -70,20 +70,20 @@ async function SearchBook() {
     await driver.sleep(200);
 
     const inputKind = await driver.wait(until.elementLocated(By.xpath(`//*[@name="key"]`)));
-    console.log(inputKind);
+    //console.log(inputKind);
     const stringvalue = "javascript";
     inputKind.sendKeys(stringvalue);
     console.log(inputKind);
     // 無法輸入的原因 sleep 需要時間輸入 done in 8.15s
-    await driver.sleep(300);
+    await driver.sleep(3000);
 
-    const SearchButton = await driver.wait(until.elementsLocated(By.xpath(`//*button[text()="Submit")]`)));
+    const SearchButton = await driver.wait(until.elementLocated(By.xpath(`//*[@id="search"]/button`)));
     //const SearchButton = await driver.wait(until.elementsLocated(By.xpath(`//*[@id="search"]/button`)));
     //const SearchButton = driver.wait(By.xpath(`//*[@id="search"]/button`));
     
-    console.log(SearchButton);
+    //console.log(SearchButton);
     SearchButton.click();
-    await driver.sleep(200);
+    await driver.sleep(3000);
     
 
     //await driver.sleep(100);
