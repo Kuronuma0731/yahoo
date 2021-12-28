@@ -19,10 +19,5 @@ function openyahoo() {
         return;
     }
 
-    //const web = "https://tw.finance.yahoo.com/";  //取得想要的網站
-
-    //await driver.get(web);
-    //
-    //await driver.quit(web);
 }
 //
