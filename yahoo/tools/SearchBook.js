@@ -34,64 +34,57 @@ async function SearchBook() {
         console.error(e);
         return;
     }
-    const web = 'https://www.twitch.tv/uzra'; // FB登入頁面
+    //const web = 'https://www.twitch.tv/uzra'; // FB登入頁面
+    const web = 'https://news.wearn.com/news.asp?cat=%AC%FC%AA%D1';
     await driver.get(web); // 在這裡要用await確保打開完網頁後才能繼續動作
     await driver.sleep(1000);
 
     try {
-        //同上
-        //const booknotifications = await driver.wait(until.elementsLocated(By.xpath(`//*[@class="hot_key_words clearfix"]`)));
-        //const booknotifications = await driver.wait(until.elementsLocated(By.xpath(`//*[@class="hot_key_words clearfix"]`)));
-        //const booknotifications = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"hot_key_words clearfix")]`)));
-        //const booknotifications = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"hot_key_words clearfix")]`)));
 
-        //console.log(booknotifications)
-        //for (const ff of booknotifications)
-        //{
-        //    const fs1 = await ff.getText();
-        //    console.log(fs1);
-        //}
+        for (var i = 1; i < 30; i++) {
+            //判定是否每股
+            const Judging_U_S_Stock = await driver.wait(until.elementLocated(By.xpath(`/html/body/div[4]/div/div[1]/div[1]/div/ul/li[` + i + `]/div/span[2]/a`))).getText(); //判斷是否美股
+            //const s = vv.validate(Judging_U_S_Stock, { "type":"string"});
+            //console.log(s);
+            //console.log(Judging_U_S_Stock.length);
+            if (Judging_U_S_Stock.length==2) {
+                //console.log('1');
+                //console.log(Judging_U_S_Stock);
+                const TextTime = await driver.wait(until.elementsLocated(By.xpath(`/html/body/div[4]/div/div[1]/div[1]/div/ul/li[` + i + `]/div/span[1]`))); // Time
+                const PathText = `/html/body/div[4]/div/div[1]/div[1]/div/ul/li[` + i + `]/a`; //標題
+                const SearchText = await driver.wait(until.elementsLocated(By.xpath(PathText)));
+                //Array ss = new Array(30); 
+                let Txt;
+                for (const Text of TextTime) {
+                    
+                    // 印出時間
+                    Txt = await Text.getText();
+                    //Txt.substring();
+                    //console.log(Txt);
+                }
+                let ss;
+                for (const Search of SearchText)
+                {
+                    ss = await Search.getText();
+                    //console.log(jud);
+                }
+                console.log("Release Time:" + Txt + " "+ ss);
 
-
-
-
-        //const closeBanner = await driver.wait(until.elementLocated(By.xpath(`//*[@id="close_top_banner"]`)));
-        ////成功關閉 廣告 close
-        //closeBanner.click();
-        //await driver.sleep(200);
-        //
-        //const inputKind = await driver.wait(until.elementLocated(By.xpath(`//*[@name="key"]`)));
-        ////console.log(inputKind);
-        //const stringvalue = "javascript";
-        //inputKind.sendKeys(stringvalue);
-        ////console.log(inputKind);
-        //// 無法輸入的原因 sleep 需要時間輸入 done in 8.15s
-        //await driver.sleep(3000);
-        //
-        //const SearchButton = await driver.wait(until.elementLocated(By.xpath(`//*[@id="search"]/button`)));
-        ////const SearchButton = await driver.wait(until.elementsLocated(By.xpath(`//*[@id="search"]/button`)));
-        ////const SearchButton = driver.wait(By.xpath(`//*[@id="search"]/button`));
-        //
-        ////console.log(SearchButton);
-        //SearchButton.click();
-
-        //await driver.sleep(3000);
-        //const SearchText = await driver.wait(until.elementLocated(By.xpath(`//a[contains(@rel,'mid_name')]`))).getText(); // javascript
-        // 
-        //const SearchText = await driver.wait(until.elementLocated(By.xpath(`//*[@class,"CoreText-sc-cpl358-0 bHivom"]`)), 5000).getText();
-        const SearchText = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"hHwUye")]`)));
-        for (const tw of SearchText) {
-            let ss = await tw.getText();
-
-              console.log(ss);
+                //
+                ////driver.sleep(2000);
+                ////const SearchText = await driver.wait(until.elementsLocated(By.xpath(`//*[contains(@class,"hHwUye")]`)));  Uzra
+                //for (const tw of SearchText) {
+                //    let ss = await tw.getText();
+                //
+                //    console.log(ss);
+                //}
+            }
         }
-        //console.log(vv.validate(SearchText, { "type": "string" }));
-        //console.log(SearchText);
-        //console.log(SearchText);
-        //await driver.sleep(100);
+
+
+
         driver.quit();
-    } catch (e)
-    {
+    } catch (e) {
         console.error("ERROR:" + e);
         driver.quit();
     }
@@ -101,6 +94,6 @@ async function SearchBook() {
     //}
 
 
-    
+
 
 }
