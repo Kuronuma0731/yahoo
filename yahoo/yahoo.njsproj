@@ -39,7 +39,6 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="tools\crawleyahoo.js" />
-    <Content Include="tools\google_sheets\credentials.json" />
     <Content Include="tools\initDriver.js" />
     <Content Include="tools\initDriverT.js" />
     <Content Include="tools\SearchBook.js" />
