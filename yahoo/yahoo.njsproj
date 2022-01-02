@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="tools\" />
+    <Folder Include="tools\google_sheets\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
